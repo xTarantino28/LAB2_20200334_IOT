@@ -21,7 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+        Toast.makeText(SignUpActivity.this, "Create Account page", Toast.LENGTH_SHORT).show();
         binding.createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

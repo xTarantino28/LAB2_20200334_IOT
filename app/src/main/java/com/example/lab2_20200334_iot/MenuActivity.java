@@ -3,11 +3,13 @@ package com.example.lab2_20200334_iot;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lab2_20200334_iot.api.UserService;
@@ -36,6 +38,7 @@ public class MenuActivity extends AppCompatActivity {
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Toast.makeText(MenuActivity.this, "Menu page", Toast.LENGTH_SHORT).show();
         userService = new Retrofit.Builder()
                 .baseUrl("https://randomuser.me")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -48,7 +51,16 @@ public class MenuActivity extends AppCompatActivity {
         binding.chronometerButtonOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, ChronometerActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        binding.counterButtonOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, CounterActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -70,7 +82,6 @@ public class MenuActivity extends AppCompatActivity {
                           binding.completeNameTextView.setText(completeName);
                           String urlAvatar = result.getPicture().getThumbnail();
                           Glide.with(MenuActivity.this).load(urlAvatar).into(binding.avatarImageView);
-
                        }
 
                     }
@@ -81,8 +92,11 @@ public class MenuActivity extends AppCompatActivity {
 
                 }
             });
+        } else {
+            Toast.makeText(MenuActivity.this, "Internet connection required to display user information", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
     public boolean tengoInternet() {
