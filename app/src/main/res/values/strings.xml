@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LAB2_20200334_IOT</string>
+    <string name="nameLabel">Name</string>
+    <string name="lastNameLabel">Last Name</string>
+    <string name="emailLabel">Email</string>
+    <string name="passwordLabel">Password</string>
+    <string name="checkBoxLabel">I agree with the Terms of Service and Privacy Policy</string>
 </resources>
